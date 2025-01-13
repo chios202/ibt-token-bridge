@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Token Bridge Application for Ethereum and Sui"
+    />
+    <!-- Add Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Add base styling -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #111827;
+        color: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Debug styling to verify component mounting */
+      #root:empty {
+        background: red;
+        opacity: 0.1;
+      }
+
+      /* Toast container styling */
+      .Toastify__toast {
+        background-color: #1f2937 !important;
+        color: #ffffff !important;
+      }
+    </style>
+    <!-- Add manifest and favicon references -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <title>Token Bridge</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+    <!-- Debug script to help diagnose mounting issues -->
+    <script>
+      // Log initial mount attempt
+      console.log('Document ready, checking mounting elements...');
+      
+      // Monitor root element
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.addedNodes.length) {
+            console.log('New content added to #root');
+          }
+        });
+      });
+      
+      // Start observing
+      observer.observe(document.getElementById('root'), {
+        childList: true,
+        subtree: true
+      });
+
+      // Log window load completion
+      window.addEventListener('load', () => {
+        console.log('Window loaded completely');
+        console.log('Root element content:', document.getElementById('root').innerHTML);
+      });
+    </script>
+  </body>
+</html>
